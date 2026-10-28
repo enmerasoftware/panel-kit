@@ -1,0 +1,17 @@
+/*
+ * @enmera/panel-kit — Tailwind CSS v4 bağlantısı.
+ * Projenin ana CSS dosyasında `@import "tailwindcss";` satırından sonra: @import "@enmera/panel-kit/theme.css";
+ * Bileşenlerin sınıflarını taratır ve shadcn belirteçleri (primary, muted, card, sidebar …) dışında kullandığı birkaç
+ * belirtece varsayılan verir. Proje kendi değerini tanımlarsa onunki geçerlidir (`@theme default`).
+ */
+@source "./dist";
+
+@theme default {
+    --text-2xs: 0.6875rem;
+    --text-2xs--line-height: 1rem;
+    --font-display: var(--font-sans);
+    --color-ink: #121212;
+    --color-brand-link: var(--color-primary);
+    --color-on-brand: var(--color-primary-foreground);
+    --color-on-brand-ink: var(--color-primary);
+}

@@ -1,0 +1,85 @@
+{
+  "name": "@enmera/panel-kit",
+  "version": "0.1.0",
+  "description": "Shared components for admin panels built with React, react-aria and Tailwind CSS: one look for every button, badge, box and heading.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Enmera",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enmerasoftware/panel-kit.git"
+  },
+  "homepage": "https://github.com/enmerasoftware/panel-kit#readme",
+  "keywords": [
+    "react",
+    "react-aria",
+    "tailwindcss",
+    "components",
+    "admin-panel",
+    "design-system"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist",
+    "lang",
+    "theme.css",
+    "README.md",
+    "README.tr.md",
+    "CHANGELOG.md"
+  ],
+  "exports": {
+    "./ui/*": {
+      "types": "./dist/ui/*.d.ts",
+      "default": "./dist/ui/*.js"
+    },
+    "./hooks/*": {
+      "types": "./dist/hooks/*.d.ts",
+      "default": "./dist/hooks/*.js"
+    },
+    "./theme.css": "./theme.css",
+    "./lang/*": "./lang/*",
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "class-variance-authority": ">=0.7",
+    "cn": ">=0.5",
+    "lucide-react": ">=1",
+    "next-themes": ">=0.4",
+    "react": ">=19",
+    "react-aria-components": ">=1.22",
+    "recharts": ">=3",
+    "sonner": ">=2"
+  },
+  "peerDependenciesMeta": {
+    "next-themes": {
+      "optional": true
+    },
+    "recharts": {
+      "optional": true
+    },
+    "sonner": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "class-variance-authority": "^0.7.1",
+    "cn": "^0.5.0",
+    "lucide-react": "^1.60.0",
+    "next-themes": "^0.4.6",
+    "react": "^19.3.1",
+    "react-aria-components": "^1.22.1",
+    "recharts": "^3.10.1",
+    "sonner": "^2.0.8",
+    "typescript": "^7.0.2"
+  }
+}
