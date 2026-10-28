@@ -16,6 +16,8 @@ const sizes = {
     small: 'font-display text-lg tracking-tight',
     base: 'text-base',
     sm: 'text-sm',
+    // Yoğun araç panellerindeki küçük bölüm başlığı.
+    xs: 'text-xs',
 } as const;
 
 export type HeadingSize = keyof typeof sizes;

@@ -1,6 +1,6 @@
 {
   "name": "@enmera/panel-kit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Shared components for admin panels built with React, react-aria and Tailwind CSS: one look for every button, badge, box and heading.",
   "type": "module",
   "license": "MIT",

@@ -7,6 +7,8 @@ const tones = {
     // Tanıtım sitesinin bağlantı rengi (beyaz zeminde okunaklı marka tonu).
     brand: 'font-medium text-brand-link hover:underline dark:text-primary',
     warning: 'font-medium text-amber-700 hover:underline dark:text-amber-400',
+    // Başarısız işlemi yeniden deneme gibi hata bağlamındaki metin düğmesi.
+    danger: 'font-medium text-destructive hover:underline',
 } as const;
 
 const base = 'inline-flex max-w-full items-center gap-1 rounded-sm text-start underline-offset-4 outline-hidden focus-visible:ring-2 focus-visible:ring-ring/40 [&_svg]:size-3.5 [&_svg]:shrink-0';

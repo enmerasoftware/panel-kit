@@ -27,6 +27,9 @@ const buttonVariants = cva(
         caution: "bg-yellow-400 text-yellow-950 hover:bg-yellow-400/85 focus-visible:ring-yellow-400/40",
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
+        // Satırdaki sil/kaldır ikonu: zemin yalnız üzerine gelince, yazı her zaman kırmızı.
+        "destructive-ghost":
+          "text-destructive hover:bg-destructive/10 hover:text-destructive focus-visible:ring-destructive/20 aria-expanded:bg-destructive/10 dark:hover:bg-destructive/20",
         link: "text-primary underline-offset-4 hover:underline",
         // Açık zeminde koyu düğme (sitede ikinci çağrı, yüzen "Searvia'ya sor"); koyu temada marka rengi.
         inverse: "bg-ink text-white hover:bg-ink/85 dark:bg-primary dark:text-primary-foreground dark:hover:bg-primary/85",

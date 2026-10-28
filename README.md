@@ -63,14 +63,14 @@ class at the call site.
 
 | What | Component | Options |
 |---|---|---|
-| Button, link button | `ui/button`: `Button`, `LinkButton` | default, outline, secondary, ghost, inverse, light, on-brand, on-brand-soft, floating, warning, caution, destructive, link · xs, sm, default, lg, icon sizes |
-| Text button and link | `ui/text-button`: `TextButton`, `TextLink` | primary, muted, brand, warning · xs, sm |
+| Button, link button | `ui/button`: `Button`, `LinkButton` | default, outline, secondary, ghost, inverse, light, on-brand, on-brand-soft, floating, warning, caution, destructive, destructive-ghost, link · xs, sm, default, lg, icon sizes |
+| Text button and link | `ui/text-button`: `TextButton`, `TextLink` | primary, muted, brand, warning, danger · xs, sm |
 | Clickable row | `ui/row-button`: `RowButton` (`isSelected`), `RowLink` | padding from the caller |
 | Selectable card | `ui/option-card`: `OptionCard` (`isSelected`) | |
 | Main choice, filter pill | `ui/segmented`: `Segmented`; `ui/chip`: `Chip` | |
 | Badge | `status-badge`: `StatusBadge` | success, danger, warning, info, purple, neutral, primary, accent, overlay · sm, default |
 | Box, section | `ui/tile`: `Tile`, `TooltipBox`; `section-card`: `SectionCard` | default, primary, muted, success, warning, danger, info · sm, default, lg, flush · `interactive`; SectionCard `highlighted`, `flush` |
-| Heading | `ui/heading`: `Heading` | mega, hero, display, section, title, subtitle, card, small, base, sm |
+| Heading | `ui/heading`: `Heading` | mega, hero, display, section, title, subtitle, card, small, base, sm, xs |
 | Icon background | `ui/icon-tile`: `IconTile` | beside text, not above a heading |
 | Small parts | `ui/code`: `Code`; `ui/meta`: `MetaRow`, `List`, `ListRow` | |
 | Forms and overlays | `ui/input`, `ui/input-group`, `ui/select`, `ui/combobox`, `ui/textarea`, `ui/checkbox`, `ui/radio-group`, `ui/switch`, `ui/slider`, `ui/field`, `ui/dialog`, `ui/alert-dialog`, `ui/sheet`, `ui/popover`, `ui/dropdown-menu`, `ui/tooltip`, `ui/command` | |
