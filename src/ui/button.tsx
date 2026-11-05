@@ -33,8 +33,8 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         // Açık zeminde koyu düğme (sitede ikinci çağrı, yüzen "Searvia'ya sor"); koyu temada marka rengi.
         inverse: "bg-ink text-white hover:bg-ink/85 dark:bg-primary dark:text-primary-foreground dark:hover:bg-primary/85",
-        // Sayfanın üstünde yüzen koyu düğme ("Searvia'ya sor").
-        floating: "bg-ink text-white shadow-lg hover:bg-ink/85 dark:bg-primary dark:text-primary-foreground dark:hover:bg-primary/85",
+        // Sayfanın üstünde yüzen koyu düğme ("Searvia'ya sor"); koyu temada kart rengi, sayfanın birincil düğmesiyle karışmaz.
+        floating: "bg-ink text-white shadow-lg hover:bg-ink/85 dark:bg-card dark:text-foreground dark:ring-1 dark:ring-foreground/15 dark:hover:bg-muted",
         // Marka renkli zeminin üstündeki düğmeler (ana sayfa, blog çağrısı): dolu ve saydam.
         "on-brand": "bg-on-brand text-on-brand-ink hover:bg-on-brand/90",
         "on-brand-soft": "bg-on-brand/10 text-on-brand ring-1 ring-on-brand/30 hover:bg-on-brand/20",
@@ -78,16 +78,32 @@ function withPendingIcon(children: React.ReactNode): React.ReactNode {
   return [<LoaderCircleIcon key="pending" className="animate-spin" />, ...items]
 }
 
+// react-aria DOM özniteliklerini süzer ve `aria-keyshortcuts` düşer; öznitelik `render` ile öğeye yazılır.
+type DomRender = (props: any, renderProps: any) => React.ReactElement
+
+function withKeyShortcuts(tag: string, shortcuts: string | undefined, render: DomRender | undefined): DomRender | undefined {
+  if (!shortcuts) return render
+
+  return (props, renderProps) =>
+    render
+      ? React.cloneElement(render(props, renderProps) as React.ReactElement<Record<string, unknown>>, { "aria-keyshortcuts": shortcuts })
+      : React.createElement(tag, { ...props, "aria-keyshortcuts": shortcuts })
+}
+
 function Button({
   className,
   variant = "default",
   size = "default",
   children,
+  "aria-keyshortcuts": keyShortcuts,
+  render,
   ...props
 }: Omit<ButtonPrimitiveProps, "className"> &
   React.RefAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants> & {
     className?: string
+    /** Klavye kısayolu, ör. "Meta+K Control+K"; öğeye `aria-keyshortcuts` olarak yazılır. */
+    "aria-keyshortcuts"?: string
   }) {
   return (
     <ButtonPrimitive
@@ -95,6 +111,7 @@ function Button({
       data-variant={variant}
       data-size={size}
       className={cn(buttonVariants({ variant, size, className }))}
+      render={withKeyShortcuts("button", keyShortcuts, render as DomRender | undefined) as ButtonPrimitiveProps["render"]}
       {...props}
     >
       {props.isPending && typeof children !== "function" ? withPendingIcon(children) : children}
@@ -106,17 +123,25 @@ function LinkButton({
   className,
   variant = "default",
   size = "default",
+  "aria-keyshortcuts": keyShortcuts,
+  render,
   ...props
 }: Omit<LinkPrimitiveProps, "className"> &
   VariantProps<typeof buttonVariants> & {
     className?: string
+    /** Klavye kısayolu, ör. "Meta+K Control+K"; öğeye `aria-keyshortcuts` olarak yazılır. */
+    "aria-keyshortcuts"?: string
   }) {
+  // react-aria bağlantısı adres yoksa ya da kapalıysa <span> çizer.
+  const tag = props.href && !props.isDisabled ? "a" : "span"
+
   return (
     <LinkPrimitive
       data-slot="button"
       data-variant={variant}
       data-size={size}
       className={cn(buttonVariants({ variant, size, className }))}
+      render={withKeyShortcuts(tag, keyShortcuts, render as DomRender | undefined) as LinkPrimitiveProps["render"]}
       {...props}
     />
   )
